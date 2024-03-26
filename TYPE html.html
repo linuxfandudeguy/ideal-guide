@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Compiler</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .run-button {
+        background-color: #add8e6; /* Pastel blue */
+        color: #fff;
+    }
+    .reset-button {
+        background-color: #ff69b4; /* Pink */
+        color: #fff;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>HTML Compiler</h2>
+    <textarea id="html-input" placeholder="Enter your HTML code here"></textarea>
+    <button class="button run-button" onclick="runCode()">Run</button>
+    <button class="button reset-button" onclick="resetCode()">Reset</button>
+    <iframe id="output" style="width: 100%; height: 300px; border: 1px solid #ccc; border-radius: 5px; margin-top: 10px;"></iframe>
+</div>
+
+<script>
+    function runCode() {
+        var htmlCode = document.getElementById('html-input').value;
+        var iframe = document.getElementById('output');
+        iframe.contentDocument.write(htmlCode);
+        iframe.contentDocument.close();
+    }
+
+    function resetCode() {
+        document.getElementById('html-input').value = '';
+        document.getElementById('output').contentDocument.write('');
+    }
+</script>
+</body>
+</html>
